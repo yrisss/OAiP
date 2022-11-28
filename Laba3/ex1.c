@@ -12,6 +12,6 @@ setlocale (LC_ALL, "");
                 printf("Можно"); }
                 
 if (v != 1) 
-printf("Íåëüçÿ"); 
+printf("Нельзя"); 
     return 0;
 }
