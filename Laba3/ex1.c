@@ -9,9 +9,9 @@ setlocale (LC_ALL, "");
         for (int kb = 0; kb < s/b; kb++)
             if (km*m + kb*b == s) {
             	v = 1;
-                printf("Можно"); }
+                printf("РњРѕР¶РЅРѕ"); }
                 
 if (v != 1) 
-printf("Нельзя"); 
+printf("ГЌГҐГ«ГјГ§Гї"); 
     return 0;
 }
