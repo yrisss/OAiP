@@ -24,8 +24,8 @@ printf("Initial array: ");
         }
     }
     
-   /*  for(i = 6; i < n - 1; i++) { 
-       for(j = 6; j < n - i - 1 ; j++) {  
+     for(int i = 6, q = 0; i < n - 1; i++, q++) { 
+       for(j = 6; j < n - q - 1 ; j++) {  
            if(a[j] < a[j+1]) {           
               int tmp = a[j];
               a[j] = a[j+1] ;
@@ -33,7 +33,9 @@ printf("Initial array: ");
            }
         }
     } 
-    */
+    
     for (i = 0; i<n; i++)
     printf("%d ", a[i]);
+    
+    return 0;
  }
