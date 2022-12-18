@@ -5,14 +5,14 @@ int main() {
 	setlocale (LC_ALL, "");
 	int x=0,y,i,j,k=0,f;
 	while(x<=0 || y<=0) {
-		printf("Ââåäèòå ðàçìåðû ìàòðèöû: \n");
+		printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ñ‹ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ñ‹: \n");
 		scanf("%d", &x);
 		scanf("%d", &y);
 	}
 	int a[x][y];
 	for(i=0; i<x; i++) {
 		for(j=0; j<y; j++) {
-			printf("Enter [%d][%d] - ", i, j);
+			printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ [%d][%d] - ", i, j);
 			scanf("%d", &a[i][j]);
 		}
 	}
