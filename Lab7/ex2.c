@@ -26,9 +26,7 @@ int main() {
     fflush(stdin);
     system("cls");
     printf("Initial string:\n%s", string);
-    //printf("%d\n", strlen(string));
     deletingSpace(string);
-   // printf("%d", strlen(string));
     printf("\nChanged string:\n%s", string);
     getch();
 }
