@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_OF_TRAINS 100
-
+int n_sort = 0;
 int number_of_trains = 0;
 typedef struct trains
 {
@@ -36,7 +35,6 @@ void add_new_train(Trains *trains)
     scanf("%d", &trains[number_of_trains].parking_time);
     system("cls");
     number_of_trains++;
-    // trains = (Trains *) realloc(trains, ((number_of_trains + 1) * (sizeof(Trains))));                 // Ломает программу
     printf("New train was added!\n");
     system("pause");
 }
@@ -139,9 +137,73 @@ void search_list(Trains *trains)
         }
         else if (n == 0)
             break;
-        else {
+        else
+        {
             system("cls");
-            printf("Wrong number selected. Try again");
+            printf("Wrong number selected. Try again\n");
+            system("pause");
+        }
+    }
+}
+
+int sort_int(const void *a, const void *b)
+{
+    return (*(int *)a - *(int *)b);
+}
+
+int sort_char(const void *a, const void *b)
+{
+    return strcmp((char *)a, (char *)b);
+}
+
+int sorting(const void *a, const void *b)
+{
+    Trains *s1 = (Trains *)a;
+    Trains *s2 = (Trains *)b;
+    switch (n_sort)
+    {
+    case 1:
+        return sort_int(&s1->n_train, &s2->n_train);
+    case 2:
+        return sort_char(&s1->destination, &s2->destination);
+    case 3:
+        return sort_int(&s1->travel_days, &s2->travel_days);
+    case 4:
+        return sort_int(&s1->arrival_time, &s2->arrival_time);
+    case 5:
+        return sort_int(&s1->parking_time, &s2->parking_time);
+    default:
+        return 0;
+    }
+}
+
+void sort_list(Trains *trains)
+{
+    int n;
+    while (1)
+    {
+        system("cls");
+        printf("1. Sory by number of train\n");
+        printf("2. Sort by destination\n");
+        printf("3. Sort by travel days\n");
+        printf("4. Sort by arrival time\n");
+        printf("5. Sort by parking time\n");
+        printf("Select number(0 - exit): ");
+        scanf("%d", &n);
+        n_sort = n;
+        system("cls");
+        if (n >= 1 && n <= 5)
+        {
+            qsort(trains, number_of_trains, sizeof(Trains), sorting);
+            output_list(trains);
+            system("pause");
+        }
+        else if (n == 0)
+            break;
+        else
+        {
+            system("cls");
+            printf("Wrong number selected. Try again\n");
             system("pause");
         }
     }
@@ -234,7 +296,6 @@ void delete_train(Trains *trains)
                 trains[i] = trains[i + 1];
             }
             number_of_trains--;
-            // trains = (Trains *)realloc(trains, number_of_trains + 1 * (sizeof(Trains))); //Ломает программу
             system("cls");
             printf("Train was deleted!\n");
             system("pause");
@@ -250,9 +311,10 @@ void delete_train(Trains *trains)
     }
 }
 
-void main_menu(Trains *trains)
+void main_menu()
 {
-
+    Trains *trains = NULL;
+    trains = (Trains *)malloc((number_of_trains + 1) * sizeof(Trains));
     int n = 0;
     while (1)
     {
@@ -267,15 +329,21 @@ void main_menu(Trains *trains)
         printf("\nSelect number: ");
         scanf("%d", &n);
         if (n == 1)
+        {
             add_new_train(trains);
-        // else if (n == 2)
-        // sort_list();
+            trains = (Trains *)realloc(trains, (number_of_trains + 1) * (sizeof(Trains)));
+        }
+        else if (n == 2)
+            sort_list(trains);
         else if (n == 3)
             search_list(trains);
         else if (n == 4)
             change_train(trains);
         else if (n == 5)
+        {
             delete_train(trains);
+            trains = (Trains *)realloc(trains, (number_of_trains + 1) * (sizeof(Trains)));
+        }
         else if (n == 6)
         {
             output_list(trains);
@@ -294,7 +362,5 @@ void main_menu(Trains *trains)
 
 int main()
 {
-    Trains *trains = NULL;
-    trains = (Trains *)malloc(number_of_trains + MAX_OF_TRAINS * sizeof(Trains));
-    main_menu(trains);
+    main_menu();
 }
