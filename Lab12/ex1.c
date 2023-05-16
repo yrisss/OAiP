@@ -66,7 +66,7 @@ void initialize_table(struct hash_table* table) {
 int main() {
     struct hash_table table;
     int i;
-    srand(time(NULL)); // инициализация генератора случайных чисел
+    srand(time(NULL));
     initialize_table(&table); // Инициализация хеш-таблицы перед использованием
     for (i = 0; i < 10; i++) {
         insert(&table, rand(), i);
