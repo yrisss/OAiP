@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-
-int x,a;
-printf("Vvedite peremennuy: ");
-scanf("%d", &x);
-a = 4 * (pow(x,8));
-printf("Rezultat: %d", a);
+    int x,a;
+    printf("Enter variable: ");
+    scanf("%d", &x);
+    a= 4 * (pow(x,8));
+    printf("Rezultat: %d", a);
 }
